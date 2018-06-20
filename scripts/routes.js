@@ -39,6 +39,7 @@ module.exports = function(app) {
 
     //--------------------------------------------------------------//
     //Test amaçlı comment//
+    //ikinci test//
     app.post('/api/request', function(req, res) {
         console.log("routes.js'e request post geldi");
         let params = [  req.body.nameAndSurname, 
