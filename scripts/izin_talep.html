@@ -240,7 +240,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="date" class="form-control" id="startDate" ng-model="requestdate" onchange="mydate1();" ng-required="true" />
+                                                <input type="date" class="form-control" ng-model="requestDate" ng-required="true" />
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +268,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="date" class="form-control" id="startDate" ng-model="startDate" onchange="mydate1();" ng-required="true" />
+                                            <input type="date" class="form-control" ng-model="startDate" ng-required="true" />
                                         </div>
                                         <br>
                                         <label for="inputDate2" class="col-sm-4 control-label">Göreve Başlayacağı Tarih</label>
@@ -310,6 +310,7 @@
                                 </form>
                             <div class="box-footer">
                                 <button type="submit" ng-click="insertRequest()" class="btn btn-success pull-right">Gönder</button>
+                                <button type="submit" ng-click="getRequest()" class="btn btn-success pull-right">Bilgi Getir</button>
                             </div>
                         </div>
                     </div>
