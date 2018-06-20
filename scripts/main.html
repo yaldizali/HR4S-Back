@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="scripts/appModule.js"></script>
+<script src="scripts/appCtrlBase.js"></script>
+<link rel="stylesheet" type="text/css" href="../style/style.css" />
+<body>
+    <div ng-controller="myCtrl">
+        <p>Hoşgeldiniz {{ firstName + " " + lastName }}</p>
+        <p>İsmi güncelle: <input ng-model="firstName"></p>
+        <input ng-model="specColor">
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="insertTicket()" style="background-color:{{specColor}}">Güncelle</button>
+        <select ng-model="specColor" ng-options="x for x in styleColors">
+        </select>
+        <p>
+            <select ng-model="selectedCar">
+                <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}} {{x.color}}</option>
+            </select>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="getTickets()">Get Tickets</button>
+        </p>
+        
+        <input type="text" ng-model="newAuthor" placeholder="new author">
+        <input type="text" ng-model="newSubject" placeholder="new subject">
+        <input type="text" ng-model="newIssue" placeholder="new issue">
+        <input type="text" ng-model="newChatUrl" placeholder="new chat url">
+        <button ng-click="insertTicket(newAuthor, newSubject, newIssue, newChatUrl)">insert</button>
+
+        <p>
+            <table>
+                <tr ng-repeat="x in allTickets | orderBy : 'author'">
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ x.author | uppercase }}</td>
+                  <td>{{ x.subject }}</td>
+                  <td>{{ x.issue }}</td>
+                  <td><button ng-click="deleteTicket(x.author)">delete</button></td>
+                </tr>
+            </table>
+        </p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            // $(".deletebtn").click(function(){
+            //     alert("deleted");
+            // }); 
+        });
+    </script>
+</body>
+</html>
