@@ -55,6 +55,22 @@ module.exports = function(app) {
                         req.body.address];
         const tickets = db.any('INSERT INTO request(nameandsurname, department, requestdate, requesttype, dayCount, startdate, nextdate, phone, replacementemployee,address) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', params);
     });
+
+    app.get('/api/request', function(req, res) {
+        console.log("request'e get geldi");
+        db.query('select * from request where department in (\'bilkent\')').then(function (data) 
+        {
+            res.status(200).json(
+            {
+                status: 'success',
+                data: data,
+                message: 'Retrieved ALL tickets'
+            });
+        })
+        .catch(function (err) {
+            return err;
+        });
+    });
     
     // application -------------------------------------------------------------
 	app.get('*', function(req, res) {
